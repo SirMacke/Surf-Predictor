@@ -1,0 +1,16 @@
+{
+  "name": "surfpredictor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nuxt.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nuxt": "^3.0.0-rc.8",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.0.2"
+  }
+}
