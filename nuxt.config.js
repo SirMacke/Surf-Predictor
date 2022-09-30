@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en'
       },
-      title: 'Wind Predictor',
+      title: 'Surf Predictor',
       meta: [
         {
           name: 'viewport',
@@ -26,11 +26,11 @@ export default defineNuxtConfig({
         },
         {
           name: 'author',
-          content: 'Wind Predictor'
+          content: 'Surf Predictor'
         },
         {
           name: 'application-name',
-          content: 'Wind Predictor'
+          content: 'Surf Predictor'
         },
         {
           'http-equiv': 'X-UA-Compatible',
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'og:title',
-          content: 'Wind Predictor'
+          content: 'Surf Predictor'
         },
         {
           name: 'og:description',
