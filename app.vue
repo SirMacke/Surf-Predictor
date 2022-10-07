@@ -17,7 +17,7 @@ body
   font-family: "Lato", "sans-serif"
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  color: $color-1
+  color: $white-2
   background-color: $white-2
   -webkit-tap-highlight-color: transparent
   margin: 0px

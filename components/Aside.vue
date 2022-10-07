@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="aside">
     <aside :class="{ asideOpen: asideOpen, asideClose: !asideOpen }">
       <div id="main-links">
         <div><a class="link" href="/">Home</a></div>
@@ -19,19 +19,25 @@
 
 <script>
 export default {
-  props: ['asideOpen']
+  props: ['asideOpen'],
+  methods: {
+    clickHandler(e) {
+      //this.$emit("aside");
+      console.log(this.asideOpen)
+    }
+  }
 }
 </script>
 
 <style lang="sass" scoped>
-#container
+#aside
   position: absolute
-  height: 100vh
+  height: calc(100vh - 80px - 60px)
   width: 350px
-  top: 0px
+  top: 80px
   right: 0px
-  z-index: 15
   overflow: hidden
+  z-index: 15
 
 aside
   position: relative
@@ -40,14 +46,14 @@ aside
   width: 300px
   height: 100%
   box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.2)
-  z-index: 1000
   margin-left: 50px
+  background: rgba($white-2, 0.25)
 
   #main-links
     display: flex
     flex-direction: column
     margin: 0px 0px 0px 0px
-    padding-top: 100px
+    padding-top: 40px
 
     div
       width: 100%
@@ -55,6 +61,7 @@ aside
       margin: 0px auto 0px 0px
       font-size: 1.25em
       transition: 0.25s
+      color: $white-2
 
       .link
         margin-left: 50px
@@ -63,11 +70,11 @@ aside
 
     div:hover
       cursor: pointer
-      background: rgba(0, 0, 0, 0.1)
+      background: rgba($color-3, 0.5)
 
   #extra-links
     position: absolute
-    bottom: 50px
+    bottom: 40px
     display: flex
     flex-direction: column
     width: 100%
@@ -84,10 +91,11 @@ aside
         margin-left: 50px
         color: inherit
         text-decoration: none
+        color: $white-2
 
     div:hover
       cursor: pointer
-      background: rgba(0, 0, 0, 0.1)
+      background: rgba($color-3, 0.25)
 
 .asideOpen
   animation: asideOpen 1s forwards
