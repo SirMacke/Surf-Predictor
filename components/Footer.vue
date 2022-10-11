@@ -25,6 +25,7 @@ footer
   width: 100%
   box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.05)
   z-index: 10
+  backdrop-filter: blur(10px)
 
   #overlay
     position: absolute

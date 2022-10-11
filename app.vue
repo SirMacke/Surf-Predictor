@@ -18,9 +18,16 @@ body
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   color: $white-2
-  background-color: $white-2
+  background-color: $color-3
   -webkit-tap-highlight-color: transparent
   margin: 0px
+  
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
   
 h1, h2, h3, h4, h5, h6
   font-family: "Poppins", "sans-serif"
