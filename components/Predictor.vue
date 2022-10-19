@@ -56,16 +56,17 @@ export default {
 
     h2
       margin-bottom: 25px
+      font-size: 1.75em
 
     .fields
       display: grid
       grid-template-columns: 1fr auto
       position: relative
       width: 100%
-      font-size: 1.1em
+      font-size: 1.25em
 
       h3
-        font-size: 1.1em
+        font-size: 1.25em
         font-weight: 600
         font-family: "Lato", "sans-serif"
 
@@ -73,10 +74,10 @@ export default {
         display: flex
 
         .colon
-          margin-top: 17.5px
+          margin: 23.5px 2px 0px 2px
 
         .hour
-          margin-top: 19px
+          margin-top: 25.5px
           margin-right: 7.5px
 
         .sail
@@ -84,7 +85,7 @@ export default {
           margin-right: 7.5px
 
           span
-            font-size: 0.7em
+            font-size: 0.8em
             position: relative
             top: -5px
             margin-left: 1px
@@ -99,6 +100,7 @@ export default {
           border: none
           font-size: 1em
           color: $white-2
+          outline: none
 
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button

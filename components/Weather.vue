@@ -2,24 +2,31 @@
   <div id="weather">
     <div id="container">
       <div id="filter">
-        <button @click="selectedButton = 'medel'" :class="{ selected: selectedButton == 'medel' }">Medel</button>
-        <button @click="selectedButton = 'smhi'" :class="{ selected: selectedButton == 'smhi' }">SMHI</button>
-        <button @click="selectedButton = 'hässlö'" :class="{ selected: selectedButton == 'hässlö' }">Hässlö</button>
-        <button @click="selectedButton = 'klart'" :class="{ selected: selectedButton == 'klart' }">Klart</button>
+        <div id="left">
+          <button @click="selectedWeatherStation = 'medel'" :class="{ selected: selectedWeatherStation == 'medel' }">Medel</button>
+          <button @click="selectedWeatherStation = 'smhi'" :class="{ selected: selectedWeatherStation == 'smhi' }">SMHI</button>
+          <button @click="selectedWeatherStation = 'hässlö'" :class="{ selected: selectedWeatherStation == 'hässlö' }">Hässlö</button>
+          <button @click="selectedWeatherStation = 'klart'" :class="{ selected: selectedWeatherStation == 'klart' }">Klart</button>
+        </div>
+        <div id="right">
+          <button @click="selectedTimeFrame = '1d'" :class="{ selected: selectedTimeFrame == '1d' }">1d</button>
+          <button @click="selectedTimeFrame = '10d'" :class="{ selected: selectedTimeFrame == '10d' }">10d</button>
+        </div>
       </div>
       <div id="chart">
         <div id="overlay"></div>
         <div id="table">
           <div id="info">
-            <p>Tid</p>
+            <p v-if="selectedTimeFrame == '1d'">Tid</p>
+            <p v-if="selectedTimeFrame == '10d'">Dag</p>
             <p>Temperatur <span>(C)</span></p>
             <p>Nederbörd <span>(mm)</span></p>
             <p>Vind <span>(m/s)</span></p>
             <p>Vindbyar <span>(m/s)</span></p>
             <p>Vindriktning</p>
           </div>
-          <div id="data" v-for="(hour, index) of weather['smhi']['1d']">
-            <p>{{ new Date(hour.timestamp).getHours() }}</p>
+          <div id="data" v-for="(hour, index) of weather[selectedWeatherStation][selectedTimeFrame]" v-if="weather[selectedWeatherStation] != undefined && weather[selectedWeatherStation][selectedTimeFrame]">
+            <p>{{ selectedTimeFrame == '1d' ? new Date(hour.timestamp).getHours() : days[new Date(hour.timestamp).getDay()] }}</p>
             <p>{{ hour.temp }}°</p>
             <p>{{ hour.rain }}</p>
             <p>{{ hour.windSpeed }}</p>
@@ -40,7 +47,9 @@ let weather = (await useFetch('/api/weather')).data.value;
 export default {
   data() {
     return {
-      selectedButton: 'medel'
+      selectedWeatherStation: 'smhi',
+      selectedTimeFrame: '1d',
+      days: ['Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön']
     }
   }
 }
@@ -65,6 +74,16 @@ export default {
     #filter
       position: relative
       height: auto
+      width: 100%
+      display: flex
+
+      #left
+        position: relative
+        left: 0px
+
+      #right
+        position: absolute
+        right: -10px
 
       button
         border: none
