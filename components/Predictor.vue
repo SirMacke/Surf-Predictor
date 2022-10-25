@@ -36,6 +36,10 @@ export default {
       timeDuration: 1,
       sailSize: 6.5,
     }
+  },
+  async mounted() {
+    let res = await $fetch(`/api/predictor?timeStartHour=${this.timeStartHour}&timeDuration=${this.timeDuration}`);
+    console.log(res)
   }
 }
 </script>

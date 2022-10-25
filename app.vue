@@ -18,7 +18,6 @@ body
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   color: $white-2
-  background-color: $color-3
   -webkit-tap-highlight-color: transparent
   margin: 0px
   

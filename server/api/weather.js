@@ -5,9 +5,7 @@ export default defineEventHandler(async (event) => {
 
   let smhires = await axios('https://www.smhi.se/wpt-a/backend_tendayforecast_nextgen/forecast/fetcher/2664454/10dFormat');
   weather.smhi = { '1d': [], '10d': [] };
-
-  console.log(new Date(smhires.data.daySerie[smhires.data.daySerie.length - 1].data[0].accStart).getHours())
-  console.log(new Date(smhires.data.daySerie[smhires.data.daySerie.length - 1].data[1].accStart).getHours())
+  
   for (let daySerie of smhires.data.daySerie) {
     for (let hour of daySerie.data) {
       if (weather.smhi['1d'].length < 24) {
