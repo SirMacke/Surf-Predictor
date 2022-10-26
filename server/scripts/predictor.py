@@ -156,7 +156,6 @@ class Question:
 # %%
 # Skapar en fråga där vi säger är värmen  större eller mindre än vårt värde [0][1] alltså rad 0 värde 1 alltså 14.4
 q = Question(1, training_data[0][1])
-q
 
 # %%
 
@@ -195,10 +194,6 @@ def partitionMoreLess(rows, question):
 
 # %%
 true_rows, false_rows = partitionMoreLess(training_data, Question(1, 10)) #kolumn 1 (Wind Direction),över 20 grader
-true_rows
-
-# %%
-false_rows
 
 # %%
 def gini(rows):
@@ -227,7 +222,6 @@ def info_gain(left, right, current_uncertainty):
 
 # %%
 current_uncertainty = gini(training_data)
-current_uncertainty
 
 # %%
 # How much information do we gain by partioning on 20 heat?
@@ -278,8 +272,6 @@ def find_best_split(rows):
 # %%
 # Find the best question to ask first for our toy dataset.
 best_gain, best_question = find_best_split(training_data)
-best_question
-
 
 # %%
 class Leaf:
@@ -344,30 +336,7 @@ def build_tree(rows):
     return Decision_Node(question, true_branch, false_branch)
 
 # %%
-def print_tree(node, spacing=""):
-    """World's most elegant tree printing function."""
-
-    # Base case: we've reached a leaf
-    if isinstance(node, Leaf):
-        print (spacing + "Predict", node.predictions)
-        return
-
-    # Print the question at this node
-    print (spacing + str(node.question))
-
-    # Call this function recursively on the true branch
-    print (spacing + '--> True:')
-    print_tree(node.true_branch, spacing + "  ")
-
-    # Call this function recursively on the false branch
-    print (spacing + '--> False:')
-    print_tree(node.false_branch, spacing + "  ")
-
-# %%
 my_tree = build_tree(training_data)
-
-# %%
-print_tree(my_tree)
 
 # %%
 def classify(row, node):
@@ -384,37 +353,6 @@ def classify(row, node):
         return classify(row, node.true_branch)
     else:
         return classify(row, node.false_branch)
-
-# %%
-#######
-# Demo:
-# The tree predicts the 1st row of our
-# training data is an apple with confidence 1.
-classify(training_data[4], my_tree)
-#######
-
-# %%
-def print_leaf(counts):
-    """A nicer way to print the predictions at a leaf."""
-    total = sum(counts.values()) * 1.0
-    probs = {}
-    for lbl in counts.keys():
-        probs[lbl] = str(int(counts[lbl] / total * 100)) + "%"
-    return probs
-
-# %%
-#######
-# Demo:
-# Printing that a bit nicer
-# print_leaf(classify(training_data[0], my_tree))
-#######
-
-# %%
-#######
-# Demo:
-# On the second example, the confidence is lower
-#print_leaf(classify(training_data[4], my_tree))
-#######
 
 # %%
 # Evaluate

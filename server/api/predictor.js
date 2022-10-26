@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export default defineEventHandler(async (event) => {
   const reqQuery = useQuery(event);
-  console.log(reqQuery)
+  console.log(reqQuery);
 
   let weather = {};
 
@@ -37,7 +37,6 @@ export default defineEventHandler(async (event) => {
 
   for (let y = parseInt(reqQuery.timeStartHour); y < reqQuery.timeStartHour + reqQuery.timeDuration; y++) {
     let z = y > 23 ? y - 24 : y;
-    console.log(z)
 
     for (let x = 0; x < 24; x++) {
       let hour = weather.smhi['1d'][x];
@@ -54,12 +53,13 @@ export default defineEventHandler(async (event) => {
 
   console.log(avgWindSpeed, avgWindGust)
 
-  const pythonProcess = spawn.spawn('python', ['C:/Webdevelopment/surfpredictor/server/scripts/script.py', avgWindSpeed, avgWindGust]);
+  const pythonProcess = spawn.spawnSync('python', ['C:/Webdevelopment/surfpredictor/server/scripts/predictor.py', avgWindSpeed, avgWindGust]);
+  let pythonres = JSON.parse(pythonProcess.output[1].toString());
 
-  pythonProcess.stdout.on('data', (data) => {
-    // Do something with the data returned from python script
-    console.log(data)
-  });
+  let res = [];
+  for (let sail of Object.keys(pythonres)) res.push(sail);
+  res = res.join('/');
+  console.log(res)
 
-  return false;
+  return res;
 });

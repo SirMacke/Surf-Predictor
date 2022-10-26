@@ -5,6 +5,7 @@
         <div id="left">
           <button @click="selectedWeatherStation = 'medel'" :class="{ selected: selectedWeatherStation == 'medel' }">Medel</button>
           <button @click="selectedWeatherStation = 'smhi'" :class="{ selected: selectedWeatherStation == 'smhi' }">SMHI</button>
+          <button @click="selectedWeatherStation = 'yr'" :class="{ selected: selectedWeatherStation == 'yr' }">YR</button>
           <button @click="selectedWeatherStation = 'hässlö'" :class="{ selected: selectedWeatherStation == 'hässlö' }">Hässlö</button>
           <button @click="selectedWeatherStation = 'klart'" :class="{ selected: selectedWeatherStation == 'klart' }">Klart</button>
         </div>
@@ -25,7 +26,7 @@
             <p>Vindbyar <span>(m/s)</span></p>
             <p>Vindriktning</p>
           </div>
-          <div id="data" v-for="(hour, index) of weather[selectedWeatherStation][selectedTimeFrame]" v-if="weather[selectedWeatherStation] != undefined && weather[selectedWeatherStation][selectedTimeFrame]">
+          <div id="data" v-for="(hour, index) of weather[selectedWeatherStation][selectedTimeFrame]" v-if="weather[selectedWeatherStation] != undefined && weather[selectedWeatherStation][selectedTimeFrame] != undefined && weather[selectedWeatherStation][selectedTimeFrame].length > 0">
             <p>{{ selectedTimeFrame == '1d' ? new Date(hour.timestamp).getHours() : days[new Date(hour.timestamp).getDay()] }}</p>
             <p>{{ hour.temp }}°</p>
             <p>{{ hour.rain }}</p>

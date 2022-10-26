@@ -5,7 +5,7 @@
       <div class="fields">
         <h3>När ska du surfa?</h3>
         <div>
-          <input type="number" v-model="timeStartHour" min="0" max="23">
+          <input type="number" v-model="timeStartHour" min="0" max="23" @change="changeSail()">
           <p class="colon">:</p>
           <input type="number" v-model="timeStartMinute" min="0" max="59">
         </div>
@@ -13,7 +13,7 @@
       <div class="fields">
         <h3>Hur länge ska du surfa?</h3>
         <div>
-          <input type="number" v-model="timeDuration" min="1" max="23">
+          <input type="number" v-model="timeDuration" min="1" max="23" @change="changeSail()">
           <p class="hour">h</p>
         </div>
       </div>
@@ -38,8 +38,13 @@ export default {
     }
   },
   async mounted() {
-    let res = await $fetch(`/api/predictor?timeStartHour=${this.timeStartHour}&timeDuration=${this.timeDuration}`);
-    console.log(res)
+    this.sailSize = await $fetch(`/api/predictor?timeStartHour=${this.timeStartHour}&timeDuration=${this.timeDuration}`);
+  },
+  methods: {
+    async changeSail() {
+      this.sailSize = '';
+      this.sailSize = await $fetch(`/api/predictor?timeStartHour=${this.timeStartHour}&timeDuration=${this.timeDuration}`);
+    }
   }
 }
 </script>
