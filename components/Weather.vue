@@ -3,10 +3,9 @@
     <div id="container">
       <div id="filter">
         <div id="left">
-          <button @click="selectedWeatherStation = 'medel'" :class="{ selected: selectedWeatherStation == 'medel' }">Medel</button>
+          <button @click="selectedWeatherStation = 'average'" :class="{ selected: selectedWeatherStation == 'average' }">Medel</button>
           <button @click="selectedWeatherStation = 'smhi'" :class="{ selected: selectedWeatherStation == 'smhi' }">SMHI</button>
           <button @click="selectedWeatherStation = 'yr'" :class="{ selected: selectedWeatherStation == 'yr' }">YR</button>
-          <button @click="selectedWeatherStation = 'hässlö'" :class="{ selected: selectedWeatherStation == 'hässlö' }">Hässlö</button>
           <button @click="selectedWeatherStation = 'klart'" :class="{ selected: selectedWeatherStation == 'klart' }">Klart</button>
         </div>
         <div id="right">
@@ -48,7 +47,7 @@ let weather = (await useFetch('/api/weather')).data.value;
 export default {
   data() {
     return {
-      selectedWeatherStation: 'smhi',
+      selectedWeatherStation: 'medel',
       selectedTimeFrame: '1d',
       days: ['Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön']
     }
