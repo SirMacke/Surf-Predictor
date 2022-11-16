@@ -47,7 +47,7 @@ let weather = (await useFetch('/api/weather')).data.value;
 export default {
   data() {
     return {
-      selectedWeatherStation: 'medel',
+      selectedWeatherStation: 'average',
       selectedTimeFrame: '1d',
       days: ['Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön']
     }
@@ -150,6 +150,7 @@ export default {
           p
             margin: 30px 20px
             text-align: center
+            width: 25px
 
           img
             position: relative

@@ -1,5 +1,5 @@
 <template>
-  <div id="aside">
+  <div id="aside" :style="{ 'z-index': asideOpen ? 15 : 5 }">
     <aside :class="{ asideOpen: asideOpen, asideClose: !asideOpen }">
       <div id="main-links">
         <div><a class="link" href="/">Home</a></div>
@@ -37,7 +37,7 @@ export default {
   top: 80px
   right: 0px
   overflow: hidden
-  z-index: 15
+  z-index: 5
 
 aside
   position: relative
@@ -48,6 +48,7 @@ aside
   box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.2)
   margin-left: 50px
   background: rgba($white-2, 0.25)
+  backdrop-filter: blur(10px)
 
   #main-links
     display: flex

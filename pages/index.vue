@@ -24,7 +24,7 @@ export default {
     }
   },
   mounted() {
-    //document.getElementById("texture").playbackRate = .5;
+    document.getElementById("texture").playbackRate = .5;
   }
 }
 </script>

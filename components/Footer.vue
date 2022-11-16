@@ -4,7 +4,8 @@
     <div id="container">
       <div id="left">
         <NuxtLink to="/sessions">Sessions</NuxtLink>
-        <NuxtLink to="http://www.malarvader.se/2big.html" target="_blank">Video Feed</NuxtLink>
+        <!--<NuxtLink to="http://www.malarvader.se/2big.html" target="_blank">Video Feed</NuxtLink>-->
+        <NuxtLink to="/video-feed">Video Feed</NuxtLink>
       </div>
       <div id="right">
         <NuxtLink to="/login">Login</NuxtLink>

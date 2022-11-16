@@ -88,46 +88,27 @@ export default defineEventHandler(async (event) => {
       });
     }
   }
+
+  console.log(weather.smhi['1d'].length)
+  console.log(weather.yr['1d'].length)
   
   weather.average = {};
-  weather.average['1d'] = {};
+  weather.average['1d'] = [];
   weather.average['10d'] = new Object(weather.yr['10d']);
   for (let x of weather.smhi['1d']) {
     for (let y of weather.yr['1d']) {
       if (new Date(x.timestamp).getTime() == new Date(y.timestamp).getTime()) {
-        console.log(x, y)
-        //console.log(weather.smhi['1d'][x].timestamp)
-        //console.log(weather.yr['1d'][y].timestamp)
-
         weather.average['1d'].push({
+          timestamp: x.timestamp,
           temp: Math.round((x.temp + y.temp) / 2),
           rain: (x.rain + y.rain) / 2,
           windSpeed: Math.round((x.windSpeed + y.windSpeed) / 2 * 10) / 10,
           windGust: Math.round((x.windGust + y.windGust) / 2 * 10) / 10,
           windDirection: (x.windDirection + y.windDirection) / 2
-        })
-
-        weather.average['1d'][x].
-        console.log(x.windSpeed)
-        console.log(y.windSpeed)
-        console.log('-')
+        });
       }
     }
   }
-
-  /*for (let x of weather.average['10d']) {
-    for (let y of weather.smhi['10d']) {
-      if (x.timestamp == y.timestamp) {
-        x.temp = (x.temp + y.temp) / 2;
-        x.rain = (x.rain + y.rain) / 2;
-        x.windSpeed = (x.windSpeed + y.windSpeed) / 2;
-        x.windGust = (x.windGust + y.windGust) / 2;
-        x.windDirection = (x.windDirection + y.windDirection) / 2;
-      }
-    }
-  }*/
-  
-  console.log(weather.average['1d'])
 
   return weather;
 });

@@ -82,16 +82,20 @@ export default {
       div
         display: flex
 
+        p
+          margin-top: 5px
+
         .colon
-          margin: 23.5px 2px 0px 2px
+          margin: 25.5px 2px 0px 2px
 
         .hour
-          margin-top: 25.5px
+          margin-top: 27.5px
           margin-right: 7.5px
 
         .sail
           position: relative
           margin-right: 7.5px
+          margin-top: 28px
 
           span
             font-size: 0.8em
@@ -110,6 +114,8 @@ export default {
           font-size: 1em
           color: $white-2
           outline: none
+          text-decoration: underline
+          margin-top: 26.5px
 
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button
